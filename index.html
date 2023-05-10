@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bizniz kort Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Bizniz kort generator</h1>
+    <p>Tips og hjelp til å sette opp Bizniz kort:</p>
+    <button id="vis_mer" onclick="visMer()">vis mer...</button>
+    <ul id="hjelp">
+        <li>Bilde bør være 1:1 (kvadratisk, som 200x200 piksler)</li>
+        <li>Skriv ditt fulle navn</li>
+        <li>Legg til en epost som ikke er fullt av spam email</li>
+        <li>Trykk enter etter hvert element i addressefeltet (f. Eks "addresse" ENTER "By" ENTER "postnummer"</li>
+    </ul>
+    <div class="innhold">
+        <div id="kort">
+            <div id="kort_topp">
+                <input onchange="byttBilde(event)" accept="image/PNG, image/GIF, image/JPEG" type="file"
+                    name="bildeknapp" id="bildeknapp">
+                <div id="navn_og_tittel">
+                    <button class="navn-tittel" id="navn">
+                        <h2 contenteditable="true">Navn Navnesen</h2>
+                    </button>
+                    <button class="navn-tittel" id="tittel">
+                        <p contenteditable="true">jobbtittel</p>
+                    </button>
+                </div>
+
+            </div>
+            <div id="kort_innhold">
+                <div id="venstre">
+                    <textarea placeholder="skriv noe om deg og din utdannelse"></textarea>
+                </div>
+                <div id="hoeyre">
+                    <div id="top">
+                        <div id="hoeyre2">
+                            <h2>Epost</h2>
+                            <div id="eposter">
+
+                            </div>
+                        </div>
+                        <div id="venstre2">
+                            <h2>Telefon nummer</h2>
+                            <p id="tlf" contenteditable="true">+47 123 45 678</p>
+                        </div>
+                    </div>
+                    <div id="bunn">
+                        <h3>Addresse</h3>
+                        <div id="addresse" contenteditable="true">
+                            <p>NavnPåVei 1A</p>
+                            <p>By</p>
+                            <p>Postnummer</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="modify_kort">
+        <fieldset id="bytt_posisjon">
+            <div id="bytt_top">
+                <input checked type="radio" name="bilde_navn_posisjon" onclick="bildeVenstre()">
+                <input type="radio" name="bilde_navn_posisjon" onclick="bildeHoeyre">
+            </div>
+            <div id="bytt_bunn">
+                <p>Bilde til venstre</p>
+                <p>Bilde til høyere</p>
+            </div>
+        </fieldset>
+
+
+        <div id="endre_farge">
+            <p>Velg bakgrunnsfarge</p>
+            <input type="color">
+        </div>
+        <div id="legg_til_epost">
+            <h2>Legg til Epost (maks 2)</h2>
+            <input type="email" placeholder="navn.navnesen@epost.com" id="email">
+            <button onclick="leggTilEmail()">legg til</button>
+            <button onclick="slettEmail()">Slett epost</button>
+        </div>
+        <!---
+                            <fieldset>
+            <input type="radio" name="select">
+            <input type="radio" name="select">
+            <input type="radio" name="select">
+            <input type="radio" name="select">
+            <input type="radio" name="select">
+        </fieldset>
+        <div id="flytt_object">
+
+        </div>
+                -->
+
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
