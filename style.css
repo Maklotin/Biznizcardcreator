@@ -6,6 +6,25 @@ body {
     transition: all 0.5s ease;
 }
 
+#textarea {
+    background-color: transparent;
+    border: 2px dashed black;
+    font-size: 2.5vh;
+    text-shadow: 1px 1px 2px black;
+    position: relative;
+    margin: 2vh;
+    max-width: 42vh;
+    min-width: 42vh;
+    max-height: 30vh;
+    min-height: 30vh;
+    transition: all 1s ease;
+
+}
+
+#textarea:focus {
+    outline: none;
+}
+
 .innhold {
     display: flex;
     flex-direction: row;
@@ -35,7 +54,7 @@ body {
     height: 60vh;
     display: flex;
     flex-flow: row wrap;
-    box-shadow: 3vh 3vh 3vh black;
+    box-shadow: 1vh 1vh 3vh black;
 }
 
 #navn_og_tittel {
@@ -68,6 +87,8 @@ body {
     background-image: url("bilder/bilde_placeholder.webp");
     background-size:cover;
     margin: 3vh;
+    box-shadow: 1vh 1vh 1vh black;
+    border: 2px solid black;
 }
 
 #bildeknapp:hover {
@@ -80,18 +101,19 @@ body {
     background-color: transparent;
     border: none;
     display: flex;
+    text-shadow: 1px 1px 2px black;
 }
 
 #navn, #tittel {
     width: 100%;
 }
 
-#navn h2, #tittel p {
+#navn h2, #tittel p, #tlf, #addresse p  {
     transition: all 0.2s ease;
     border-bottom: 0px solid black;
 }
 
-#navn h2:focus, #tittel p:focus {
+#navn h2:focus, #tittel p:focus,  #email p:focus, #tlf:focus, #addresse p:focus  {
     outline: none;
     border-bottom: 3px solid black;
 }
@@ -99,9 +121,10 @@ body {
 
 #navn h2 {
     font-size: 36px;
+    
 }
 
-#navn h2:hover, #tittel p:hover, #email p:hover {
+#navn h2:hover, #tittel p:hover, #email p:hover, #tlf:hover, #addresse p:hover  {
     color: blue;
     cursor: text;
 }
@@ -109,6 +132,7 @@ body {
 #email {
     background-color: transparent;
     border: none;
+    
 }
 
 #tittel {
@@ -128,18 +152,22 @@ body {
     height: 30vh;
 }
 
-#venstre textarea{
-    max-width: 48vh;
+#venstre {
+    max-width: 46vh;
     min-width: 48vh;
     max-height: 30vh;
     min-height: 30vh;
 }
 
+#eposttekst, #nr, #tlf, #addresse p {
+    text-shadow: 1px 1px 2px black;
+}
 
 #hoeyre {
     max-height: 30vh;
     display: flex;
     flex-direction: column;
+    transition: all 1s ease;
 }
 
 #top {
@@ -157,6 +185,7 @@ body {
 
 #bunn h3 {
     margin: 1vh;
+    text-shadow: 1px 1px 2px black;
 }
 
 #addresse {
@@ -177,9 +206,11 @@ body {
 }
 
 #bytt_posisjon {
+    margin-top: 4vh;
     display: flex;
     flex-direction: column; 
     width: 60vh;   
+    box-shadow: 1vh 1vh 1vh black;
 }
 
 #bytt_top, #bytt_bunn {
@@ -187,3 +218,17 @@ body {
     flex-direction: row;
     justify-content: space-around;
 }
+
+.radio {
+    transition: all 0.5s ease;
+}
+
+.radio:hover {
+    cursor: pointer;
+    transform: scale(2.5);
+}
+
+.radio:active {
+    transform: scale(1.2);
+}
+

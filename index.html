@@ -5,19 +5,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bizniz kort Generator</title>
+    <title>Bizniz kort creator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>Bizniz kort generator</h1>
+    <h1>Bizniz kort creator</h1>
     <p>Tips og hjelp til å sette opp Bizniz kort:</p>
     <button id="vis_mer" onclick="visMer()">vis mer...</button>
     <ul id="hjelp">
-        <li>Bilde bør være 1:1 (kvadratisk, som 200x200 piksler)</li>
-        <li>Skriv ditt fulle navn</li>
-        <li>Legg til en epost som ikke er fullt av spam email</li>
-        <li>Trykk enter etter hvert element i addressefeltet (f. Eks "addresse" ENTER "By" ENTER "postnummer"</li>
+        <li>Bilde bør være 1:1 (kvadratisk, som 200x200 piksler).</li>
+        <li>Skriv ditt fulle navn.</li>
+        <li>Legg til en epost som ikke er fullt av spam email.</li>
+        <li>Ikke bruk samme skyggefarge og tekstfarge om du velger "Impact" fonten.</li>
     </ul>
     <div class="innhold">
         <div id="kort">
@@ -26,37 +26,37 @@
                     name="bildeknapp" id="bildeknapp">
                 <div id="navn_og_tittel">
                     <button class="navn-tittel" id="navn">
-                        <h2 contenteditable="true">Navn Navnesen</h2>
+                        <h2 contenteditable="true" id="navntekst" spellcheck="false">Navn Navnesen </h2>
                     </button>
                     <button class="navn-tittel" id="tittel">
-                        <p contenteditable="true">jobbtittel</p>
+                        <p contenteditable="true" id="jobbtekst" spellcheck="false">jobbtittel</p>
                     </button>
                 </div>
 
             </div>
             <div id="kort_innhold">
                 <div id="venstre">
-                    <textarea placeholder="skriv noe om deg og din utdannelse"></textarea>
+                    <textarea id="textarea" spellcheck="false" placeholder="skriv noe om deg og din utdannelse"></textarea>
                 </div>
                 <div id="hoeyre">
                     <div id="top">
                         <div id="hoeyre2">
-                            <h2>Epost</h2>
+                            <h2 id="eposttekst" spellcheck="false">Epost</h2>
                             <div id="eposter">
 
                             </div>
                         </div>
                         <div id="venstre2">
-                            <h2>Telefon nummer</h2>
+                            <h2 id="nr" spellcheck="false">Telefonnummer</h2>
                             <p id="tlf" contenteditable="true">+47 123 45 678</p>
                         </div>
                     </div>
                     <div id="bunn">
-                        <h3>Addresse</h3>
-                        <div id="addresse" contenteditable="true">
-                            <p>NavnPåVei 1A</p>
-                            <p>By</p>
-                            <p>Postnummer</p>
+                        <h3 id="addressetekst">Addresse</h3>
+                        <div id="addresse">
+                            <p id="adr1" contenteditable="true" spellcheck="false">NavnPåVei 1A</p>
+                            <p id="adr2" contenteditable="true" spellcheck="false">By</p>
+                            <p id="adr3" contenteditable="true" spellcheck="false">Postnummer</p>
                         </div>
                     </div>
 
@@ -67,39 +67,67 @@
     </div>
     <div id="modify_kort">
         <fieldset id="bytt_posisjon">
+            <div id="flytt_beskrivelse">
+                <h3>Flytt på elementene</h3>
+                <div id="textarea_flytt">
+                    <h5>Bio</h5>
+                    <div id="bio_knapper">
+                        <button onclick="flyttTxtV()" id="A"><</button>
+                        <button onclick="flyttTxtH()" id="D">></button>
+                    </div>
+                </div>
+
+            </div>
             <div id="bytt_top">
-                <input checked type="radio" name="bilde_navn_posisjon" onclick="bildeVenstre()">
-                <input type="radio" name="bilde_navn_posisjon" onclick="bildeHoeyre">
+                <input class="radio" checked type="radio" name="bilde_navn_posisjon" onclick="bildeVenstre()">
+                <input class="radio" type="radio" name="bilde_navn_posisjon" onclick="bildeHoeyre()">
             </div>
             <div id="bytt_bunn">
                 <p>Bilde til venstre</p>
                 <p>Bilde til høyere</p>
             </div>
+            <div id="legg_til_epost">
+                <h2>Legg til Epost (maks 2)</h2>
+                <input type="email" placeholder="navn.navnesen@epost.com" id="email">
+                <button onclick="leggTilEmail()">legg til</button>
+                <button onclick="slettEmail()">Slett epost</button>
+            </div>
+            <table id="endringer">
+                <tr>
+                    <td><p>Endre bakgrunnsfarge</p></td>
+                    <td><input value="#ffffff" type="color" id="bakgrunnsfarge" onchange="endreBakgrunnsfarge()"></td>
+                </tr>
+                <tr>
+                    <td><p>Endre tekstfarge</p></td>
+                    <td><input value="#000000" type="color" id="tekstfarge" onchange="endreTekstfarge()"></td>
+                </tr>
+                <tr>
+                    <td><p>Endre skyggefarge</p></td>
+                    <td><input value="#000000" type="color" id="skyggefarge" onchange="endreSkyggefarge()"></td>
+                </tr>
+                <tr>
+                    <td><p>Endre font</p></td>
+                    <td>
+                        <select id="velg_font_select" onchange="endreFont()">
+                            <option value="0">-Velg font-</option>
+                            <option id="Aria" value="Arial, Helvetica, sans-serif">Arial</option>
+                            <option id="Cambria" value="Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">Cambria</option>
+                            <option id="Courier" value="'Courier New', Courier, monospace">Courier New</option>
+                            <option id="Franklin" value="'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Franklin Gothic Medium</option>
+                            <option id="Georgia" value="Georgia, 'Times New Roman', Times, serif">Georgia</option>
+                            <option id="Gill" value="'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Gill Sans</option>
+                            <option id="Impact" value="Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Impact</option>
+                            <option id="Lucida" value="'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Lucida Sans</option>
+                            <option id="Segoe" value="'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Segoe UI</option>
+                            <option id="Times" value="'Times New Roman', Times, serif">Times New Roman</option>
+                            <option id="Trebuchet" value="'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">Trebuchet MS</option>
+                            <option id="Verdana" value="Verdana, Geneva, Tahoma, sans-serif">Verdana</option>
+                          </select>
+                    </td>
+                </tr>
+            </table>    
+            <button onclick="printKort()">PRINT UT BIZNIZ KORT</button>
         </fieldset>
-
-
-        <div id="endre_farge">
-            <p>Velg bakgrunnsfarge</p>
-            <input type="color">
-        </div>
-        <div id="legg_til_epost">
-            <h2>Legg til Epost (maks 2)</h2>
-            <input type="email" placeholder="navn.navnesen@epost.com" id="email">
-            <button onclick="leggTilEmail()">legg til</button>
-            <button onclick="slettEmail()">Slett epost</button>
-        </div>
-        <!---
-                            <fieldset>
-            <input type="radio" name="select">
-            <input type="radio" name="select">
-            <input type="radio" name="select">
-            <input type="radio" name="select">
-            <input type="radio" name="select">
-        </fieldset>
-        <div id="flytt_object">
-
-        </div>
-                -->
 
     </div>
     <script src="script.js"></script>
