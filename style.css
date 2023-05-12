@@ -238,12 +238,14 @@ body {
 }
 
 @media print {
-    body * {
+    body {
        visibility: hidden; /* part to hide at the time of print */
        -webkit-print-color-adjust: exact !important; /* not necessary use if colors not visible */
+       print-color-adjust: exact;
     }
 
     #kort {
        background-color: blue !important;
+       print-color-adjust: exact;
     }
 }
