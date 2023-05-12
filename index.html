@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bizniz kort creator</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" print="media">
 </head>
 
 <body>
@@ -36,7 +36,7 @@
             </div>
             <div id="kort_innhold">
                 <div id="venstre">
-                    <textarea id="textarea" spellcheck="false" placeholder="skriv noe om deg og din utdannelse"></textarea>
+                    <p id="textarea" contenteditable="true" spellcheck="false">skriv noe om deg og din utdannelse</p>
                 </div>
                 <div id="hoeyre">
                     <div id="top">
@@ -75,6 +75,10 @@
                         <button onclick="flyttTxtV()" id="A"><</button>
                         <button onclick="flyttTxtH()" id="D">></button>
                     </div>
+                </div>
+                <div id="info_flyy">
+                    <h5>Informasjon</h5>
+                    <div id="info_knapper"></div>
                 </div>
 
             </div>
